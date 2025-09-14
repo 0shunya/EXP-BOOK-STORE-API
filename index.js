@@ -1,4 +1,5 @@
 const express = require("express")
+require('dotenv/config')
 const app = express()
 const PORT = 8000;
 const bookRouter = require("./routes/books.routes")
