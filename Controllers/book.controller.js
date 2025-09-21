@@ -21,7 +21,7 @@ exports.getAllBooksbyID = async function(req, res) {
 }
 exports.postBook = async function(req, res) {
 
-    const {title, description, authorId} = req.body;
+    const {title, description, authorid} = req.body;
 
     if(!title || title == '') return res.status(400).json('The title is required')
 
@@ -30,7 +30,7 @@ exports.postBook = async function(req, res) {
     const result = await db.insert(bookTable).values({
         title,
         description,
-        authorId
+        authorid
     }).returning({
         id: bookTable.id
     })
@@ -40,7 +40,7 @@ exports.postBook = async function(req, res) {
 exports.deleteBookbyID = async function (req, res) {
     const id = req.params.id
 
-    await db.delete(bookTable).where(table => eq(table.id, id))
+    await db.delete(bookTable).where(eq(bookTable.id, id));
     
     return res.status(200).json({message: `Book id:${id} deleted`});
 }
