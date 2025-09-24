@@ -2,7 +2,6 @@ const express = require("express");
 const authorsTable =  require('../Models/author.model.js')
 const db = require('../db/index.js');
 const { eq } = require("drizzle-orm");
-const { error } = require("console");
 
 const router = express.Router();
 
